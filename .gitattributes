@@ -1,0 +1,6 @@
+* text=auto eol=lf
+*.ttf binary
+*.otf binary
+*.png binary
+*.jpg binary
+main/components/78__xiaozhi-fonts/src/*.c linguist-generated=true

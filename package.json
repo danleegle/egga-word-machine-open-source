@@ -1,0 +1,10 @@
+{
+  "name": "egga-firmware-font-tools",
+  "private": true,
+  "scripts": {
+    "fonts": "python tools/regenerate_open_fonts.py"
+  },
+  "devDependencies": {
+    "lv_font_conv": "1.5.3"
+  }
+}

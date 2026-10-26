@@ -1,0 +1,14 @@
+{
+    "target": "esp32s3",
+    "builds": [
+        {
+            "name": "egga-s3-epaper-4.2",
+            "sdkconfig_append": [
+                "CONFIG_PARTITION_TABLE_CUSTOM=y",
+                "CONFIG_PARTITION_TABLE_CUSTOM_FILENAME=\"partitions/v2/16m_ota.csv\"",
+                "CONFIG_PARTITION_TABLE_FILENAME=\"partitions/v2/16m_ota.csv\"",
+                "CONFIG_EGGA_OTA_BASE_URL=\"http://localhost:3000\""
+            ]
+        }
+    ]
+}

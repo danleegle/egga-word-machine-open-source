@@ -1,0 +1,126 @@
+set(SOURCES
+    "application.cc"
+    "ai/ai_dialog_service.cc"
+    "main.cc"
+    "settings.cc"
+    "system_info.cc"
+    "assets/assets_store.cc"
+    "client_mgmt/client_mgmt_service.cc"
+    "ota/ota_service.cc"
+    "audio/audio_codec.cc"
+    "audio/audio_service.cc"
+    "audio/codecs/es8311_audio_codec.cc"
+    "audio/processors/audio_debugger.cc"
+    "audio/processors/no_audio_processor.cc"
+    "display/display.cc"
+    "display/lcd_display.cc"
+    "display/ui_page_registry.cc"
+    "display/pages/factory_test_page_adapter.cc"
+    "display/pages/vocabulary_page_adapter.cc"
+    "display/lvgl_display/lvgl_display.cc"
+    "display/lvgl_display/lvgl_theme.cc"
+    "display/lvgl_display/lvgl_font.cc"
+    "vocabulary/deck_store.cc"
+    "vocabulary/maimemo_auth_store.cc"
+    "vocabulary/maimemo_offline_store.cc"
+    "vocabulary/maimemo_open_api_client.cc"
+    "vocabulary/maimemo_study_client.cc"
+    "vocabulary/progress_store.cc"
+    "vocabulary/review_scheduler.cc"
+    "vocabulary/sync_client.cc"
+    "vocabulary/online_pronunciation_service.cc"
+    "vocabulary/vocabulary_app.cc"
+    "common/sleep_manager.cc"
+    "boards/common/board.cc"
+    "boards/common/button.cc"
+    "boards/common/i2c_bus_lock.cc"
+    "boards/common/i2c_device.cc"
+    "boards/egga/egga_nfc.cc"
+    "boards/egga-s3-epaper-4.2/board_power_bsp.cc"
+    "boards/egga-s3-epaper-4.2/charge_status.cc"
+    "boards/egga-s3-epaper-4.2/custom_lcd_display.cc"
+    "boards/egga-s3-epaper-4.2/i2c_power_hook.cc"
+    "boards/egga-s3-epaper-4.2/rtc_pcf8563.cc"
+    "boards/egga-s3-epaper-4.2/egga-s3-epaper-4.2.cc"
+    "boards/egga-s3-epaper-4.2/FT/acoustic_selftest.cc"
+    "boards/egga-s3-epaper-4.2/FT/factory_test_service.cc"
+)
+
+set(INCLUDE_DIRS
+    "."
+    "ai"
+    "assets"
+    "client_mgmt"
+    "ota"
+    "audio"
+    "display"
+    "display/lvgl_display"
+    "vocabulary"
+    "protocols"
+    "boards/common"
+)
+
+if(NOT DEFINED BOARD_TYPE)
+    set(BOARD_TYPE "egga-s3-epaper-4.2")
+endif()
+
+if(NOT DEFINED BOARD_NAME)
+    set(BOARD_NAME "${BOARD_TYPE}")
+endif()
+
+idf_component_register(
+    SRCS ${SOURCES}
+    INCLUDE_DIRS ${INCLUDE_DIRS}
+    PRIV_REQUIRES
+        78__esp-ml307
+        78__esp-opus
+        78__esp-opus-encoder
+        78__esp-wifi-connect
+        78__xiaozhi-fonts
+        app_update
+        driver
+        efuse
+        esp_adc
+        esp_app_format
+        esp_driver_gpio
+        esp_driver_i2c
+        esp_driver_i2s
+        esp_driver_spi
+        esp_driver_uart
+        esp_driver_usb_serial_jtag
+        esp_event
+        esp_http_client
+        esp_https_ota
+        esp_hw_support
+        esp_lcd
+        esp_netif
+        esp_partition
+        esp_pm
+        esp_rom
+        esp_system
+        esp_timer
+        esp_wifi
+        espressif__button
+        espressif__esp-sr
+        espressif__esp_audio_codec
+        espressif__esp_codec_dev
+        espressif__esp_lvgl_port
+        espressif__esp_websocket_client
+        json
+        log
+        lvgl__lvgl
+        mbedtls
+        nvs_flash
+        pthread
+        spi_flash
+        spiffs
+)
+
+target_compile_definitions(
+    ${COMPONENT_LIB}
+    PRIVATE
+    BOARD_TYPE=\"${BOARD_TYPE}\"
+    BOARD_NAME=\"${BOARD_NAME}\"
+    BUILTIN_TEXT_FONT=Zfull_GB_16
+    BUILTIN_ICON_FONT=font_egga_16_1
+)

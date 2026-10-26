@@ -1,0 +1,31 @@
+menu "Egga Word Machine"
+
+config BOARD_TYPE_EGGA_S3_EPAPER_4_2
+    bool "egga-s3-epaper-4.2 firmware"
+    default y
+    depends on IDF_TARGET_ESP32S3
+    help
+        This repository targets the Egga S3 4.2-inch e-paper vocabulary device
+        for the egga-s3-epaper-4.2 board.
+
+config DEFAULT_WIFI_SSID
+    string "Default Wi-Fi SSID"
+    default ""
+    help
+        Optional local default Wi-Fi SSID for provisioning a freshly flashed device.
+
+config DEFAULT_WIFI_PASSWORD
+    string "Default Wi-Fi password"
+    default ""
+    help
+        Optional local default Wi-Fi password for provisioning a freshly flashed device.
+
+config EGGA_OTA_BASE_URL
+    string "Egga OTA base URL"
+    default "https://renkebao.com"
+    help
+        Base URL used by the device firmware OTA and online deck clients. Point this to the
+        renkebao server that serves /api/ota/firmware, /api/decks/manifest, and
+        /api/assets/object/*.
+
+endmenu

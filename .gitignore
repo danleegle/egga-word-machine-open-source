@@ -1,0 +1,56 @@
+# ESP-IDF build output
+build/
+managed_components/
+releases/
+sdkconfig
+sdkconfig.old
+main/boards/*/config.build.sh.*.json
+
+# Local configuration and secrets
+.env
+*.local
+/assets/
+
+# Editor state with machine-specific paths
+.vscode/
+.idea/
+
+# Local automation scratch
+.codex-*
+.playwright-cli/
+logs/
+output/
+tmp/
+serial-wifi-*.log
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Private CI/deployment config
+.cnb.yml
+
+# Never publish device, account, build, or server state.
+.env.*
+!.env.example
+my_host/
+*.pem
+*.key
+*.p12
+*.pfx
+*.log
+*.bin
+*.elf
+*.map
+*.dump
+*.nvs
+*.bak
+node_modules/
+.agents/
+.codex/
+.tools/
+build-*/
